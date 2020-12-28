@@ -30,9 +30,7 @@ const Timer = (props) => {
     evt.preventDefault();
     helper();
     try {
-      props.useTimer._id.toString()
-        ? API.updateTasks({ name: title, notes: notes, duration: seconds })
-        : API.createTasks({ name: title, notes: notes, duration: seconds });
+      API.createTasks({ name: title, notes: notes, duration: seconds });
       console.log({
         name: title,
         notes: notes,
@@ -57,21 +55,21 @@ const Timer = (props) => {
   }, [isActive, seconds]);
 
   return (
-    <div id="timer-card" className="card">
-      <div className="container mx-auto col-6 col-s-9">
-        <div className="app">
-          <aside>
+    <div id="timer-card">
+        <div className="app enable-rounded container">
+          
             <h1>
-              <div className="time">
-                <span className="timer-span mx-auto">
+              <div className="time mx-auto">
+                <span className="timer-span">
                   {TimeFormat.fromS(seconds, "hh:mm:ss")}
                 </span>
               </div>
             </h1>
-          </aside>
+          
           <br />
           <div className='startTimeBtn'>
             <button
+            id="timer-button"
               className={`button button-primary button-primary-${
                 isActive ? "active" : "inactive"
                 }`}
@@ -82,8 +80,10 @@ const Timer = (props) => {
             <br />
           </div>
         </div>
+        <br />
         <div className="container mx-auto">
           <form>
+            < br/>
             <section>
               <section className="sessionTitle">
                 <label htmlFor="name header">Session Title:</label>
@@ -127,7 +127,6 @@ const Timer = (props) => {
             </section>
           </form>
         </div>
-      </div>
     </div >
   );
 };

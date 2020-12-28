@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../util/authContext";
 
 const styles = {
   wrapper: {
-    marginTop: "2rem",
+    
   },
   form: {
     display: "flex",
@@ -48,10 +48,10 @@ function LoginPage() {
     }
   };
   return (
-    <div style={styles.wrapper}>
-      <h1>Login</h1>
+    <div style={styles.wrapper} className="card">
+      <h1 className="about-title mx-auto">Login</h1>
       <div>{isPending && "Loading..."}</div>{" "}
-      <form disabled={isPending} style={styles.form} onSubmit={handleSubmit}>
+      <form disabled={isPending} style={styles.form} onSubmit={handleSubmit} className="mx-auto">
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -73,7 +73,7 @@ function LoginPage() {
           Submit
         </button>
       </form>
-      <div>
+      <div className="mx-auto">
         <a href="/signup">New here? Sign up!</a>
 
       </div>
